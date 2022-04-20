@@ -1,0 +1,13 @@
+name: Update SAM CLI with latest commit hash from APP Templates
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  updateCommitHash:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print commit hash
+        run: echo $GITHUB_SHA
