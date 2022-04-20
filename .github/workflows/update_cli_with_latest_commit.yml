@@ -16,7 +16,7 @@ jobs:
           ref: develop
 
       - name: Update Commit HASH
-        run: jq '.app_template_repo_commit' = $GITHUB_SHA file samcli/runtime_config.json
+        run: cat <<< $(jq --arg commit_hash "$GITHUB_SHA" --indent 4 '.app_template_repo_commit =  $commit_hash' samcli/runtime_config.json) > samcli/runtime_config.json
       
       - name: Raise PR for SAM CLI
         uses: peter-evans/create-pull-request@v3
