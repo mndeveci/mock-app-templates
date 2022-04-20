@@ -21,7 +21,7 @@ jobs:
       - name: Raise PR for SAM CLI
         uses: peter-evans/create-pull-request@v3
         with: 
-          branch: "app_templates_hash_${{ env.GITHUB_SHA }}"
+          branch: "update_app_templates_hash"
           base: develop
           title: "feat: update SAM CLI with latest App Templates HASH (${{ env.GITHUB_SHA }})"
           committer: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}>
