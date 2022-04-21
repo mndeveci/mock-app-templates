@@ -14,6 +14,7 @@ jobs:
         with:
           repository: mndeveci/mock-cli
           ref: develop
+          persist-credentials: false
 
       - name: Update Commit HASH
         run: cat <<< $(jq --arg commit_hash "$GITHUB_SHA" --indent 4 '.app_template_repo_commit =  $commit_hash' samcli/runtime_config.json) > samcli/runtime_config.json
