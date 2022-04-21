@@ -13,8 +13,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: mndeveci/mock-cli
-          ref: develop
-          persist-credentials: false
 
       - name: Update Commit HASH
         run: cat <<< $(jq --arg commit_hash "$GITHUB_SHA" --indent 4 '.app_template_repo_commit =  $commit_hash' samcli/runtime_config.json) > samcli/runtime_config.json
@@ -24,7 +22,6 @@ jobs:
         with: 
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: "update_app_templates_hash"
-          base: develop
           title: 'feat: update SAM CLI with latest App Templates HASH ( ${{ env.GITHUB_SHA }} )'
           body:
             This PR & commit is automatically created by GH action in App Templates repo to update the SAM CLI with latest hash of the App Templates.
