@@ -9,20 +9,11 @@ jobs:
   updateCommitHash:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout SAM CLI
-        uses: actions/checkout@v2
-        with:
-          repository: mndeveci/mock-cli
-
-      - name: Update Commit HASH
-        run: cat <<< $(jq --arg commit_hash "$GITHUB_SHA" --indent 4 '.app_template_repo_commit =  $commit_hash' samcli/runtime_config.json) > samcli/runtime_config.json
       
-      - name: Raise PR for SAM CLI
-        uses: peter-evans/create-pull-request@v3
+      - name: Run GH Action on SAM CLI
+        uses: peter-evans/repository-dispatch@v2
         with: 
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: update_app_templates_hash
-          title: 'feat: update SAM CLI with latest App Templates HASH ( ${{ env.GITHUB_SHA }} )'
-          body:
-            This PR & commit is automatically created by GH action in App Templates repo to update the SAM CLI with latest hash of the App Templates.
+          token: ${{ secrets.PAT_TOKEN }}
+          repository: mndeveci/mock-cli
+          event-type: update-app-templates-hash
       
