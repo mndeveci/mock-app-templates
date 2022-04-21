@@ -13,7 +13,7 @@ jobs:
       - name: Run GH Action on SAM CLI
         uses: peter-evans/repository-dispatch@v2
         with: 
-          token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           repository: mndeveci/mock-cli
           event-type: update-app-templates-hash
       
