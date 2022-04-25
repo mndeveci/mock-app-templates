@@ -10,10 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-      - name: Run GH Action on SAM CLI
-        uses: peter-evans/repository-dispatch@v2
-        with: 
-          token: ${{ secrets.PAT_TOKEN }}
-          repository: mndeveci/mock-cli
-          event-type: update-app-templates-hash
+      # - name: Run GH Action on SAM CLI
+      #   uses: peter-evans/repository-dispatch@v2
+      #   with: 
+      #     token: ${{ secrets.PAT_TOKEN }}
+      #     repository: mndeveci/mock-cli
+      #     event-type: update-app-templates-hash
+      - name: Test pushing commit
+        run: |
+          echo "Hello world!"
+
+    
       
